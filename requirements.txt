@@ -21,7 +21,7 @@ chromadb==1.5.8
 # Embeddings / ML
 sentence-transformers==3.4.1
 transformers==4.48.3
-torch==2.2.2+cpu
+torch==2.11.0+cpu
 
 # Data
 numpy==2.2.6
