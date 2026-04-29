@@ -1,16 +1,13 @@
 import os
 import re
 import requests
+from groq import Groq
 from pathlib import Path
-from openai import OpenAI
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
-from langchain_chroma import Chroma
-from huggingface_hub import InferenceClient
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.cluster import AgglomerativeClustering
-from langchain_community.embeddings import HuggingFaceEmbeddings
 
 from src.rag_pipeline import llm, db
 
@@ -31,23 +28,21 @@ driver = GraphDatabase.driver(
     )
 )
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL = "llama3"
+# OLLAMA_URL = "http://localhost:11434/api/generate"
+# MODEL = "llama3"
+
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def call_llm(prompt):
-    response = requests.post(
-        OLLAMA_URL,
-        json={
-            "model": MODEL,
-            "prompt": prompt,
-            "stream": False,
-            "options": {
-                "temperature": 0   # deterministic output
-            }
-        }
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0
     )
 
-    return response.json()["response"]
+    return response.choices[0].message.content
 
 def extract_company(query, context=None, llm=None):
     if llm:
