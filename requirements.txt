@@ -17,6 +17,7 @@ langgraph-prebuilt==1.0.11
 
 # Vector DB
 chromadb==1.5.8
+langchain-chroma==1.1.0
 
 # Embeddings / ML
 sentence-transformers==3.4.1
