@@ -9,7 +9,7 @@ DB_PATH = os.path.join(PROJECT_ROOT, "chroma_db")
 embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 db = Chroma(
-    persist_directory=DB_PATH,
+    # persist_directory=DB_PATH,
     embedding_function=embedding_function
 )
 
