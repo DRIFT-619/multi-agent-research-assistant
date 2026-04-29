@@ -1,8 +1,7 @@
 import streamlit as st
-import requests
 import time
 
-API_URL = "http://127.0.0.1:8000/ask"
+from src.multi_agent_pipeline import get_answer
 
 st.set_page_config(page_title="AI Risk Analyst", layout="wide")
 
@@ -16,12 +15,10 @@ if st.button("Analyze"):
         with st.spinner("Analyzing..."):
             start = time.time()
 
-            response = requests.post(API_URL, json={"query": query})
+            try:
+                data = get_answer(query)
 
-            end = time.time()
-
-            if response.status_code == 200:
-                data = response.json()
+                end = time.time()
 
                 st.success("Analysis complete")
 
@@ -34,10 +31,10 @@ if st.button("Analyze"):
                 st.subheader("Answer")
                 st.write(data["answer"])
 
-                st.caption(f"⏱ Response time: {round(end - start, 2)} sec")
+                st.caption(f"Response time: {round(end - start, 2)} sec")
 
-            else:
-                st.error(f"API request failed: {response.status_code}")
-                st.write(response.text)
+            except Exception as e:
+                st.error("Something went wrong")
+                st.write(str(e))
     else:
         st.warning("Please enter a query")
