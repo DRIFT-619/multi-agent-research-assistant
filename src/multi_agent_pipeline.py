@@ -6,7 +6,7 @@ from langgraph.graph import StateGraph
 
 from src.rag_pipeline import llm, rag_query, db
 from src.hybrid_pipeline import extract_company, get_company_data, link_risks_to_mitigations
-from src.hybrid_pipeline import call_llm, OLLAMA_URL, MODEL
+from src.hybrid_pipeline import call_llm # , OLLAMA_URL, MODEL
 
 class GraphState(TypedDict):
     question: str
