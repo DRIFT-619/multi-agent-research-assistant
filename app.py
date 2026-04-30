@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import time
+from langsmith import traceable
 
 from src.multi_agent_pipeline import get_answer
 
@@ -24,6 +25,7 @@ def home():
 
 # Main AI endpoint
 @app.post("/ask")
+@traceable(name="Multi-Agent Pipeline")
 def ask_question(request: QueryRequest):
     query = request.query
 
