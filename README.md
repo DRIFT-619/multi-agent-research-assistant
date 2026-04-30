@@ -57,7 +57,7 @@ The system was evaluated using key RAG quality metrics:
 
 | Metric              | Baseline RAG | Hybrid (RAG + Graph) | Improvement |
 |--------------------|-------------|---------------------|------------|
-| Context Relevance  | 0.553       | 0.553               | — (same retrieval base) |
+| Context Relevance  | 0.553       | 0.553               | (same retrieval base) |
 | Answer Relevance   | 0.455       | 0.680               | +49% |
 | Groundedness       | 0.613       | 0.646               | +5.4% |
 
