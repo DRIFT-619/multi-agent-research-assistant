@@ -41,9 +41,9 @@ This project solves that by combining:
 
 - Reduced response time from **~80 seconds → ~30 seconds**
 - Achieved **~62.5% latency reduction** through:
-  - optimized model loading
-  - efficient pipeline orchestration
-  - reduced redundant LLM calls
+  - Optimized model loading
+  - Efficient pipeline orchestration
+  - Reduced redundant LLM calls
 
 ### Evaluation Metrics
 
@@ -53,15 +53,51 @@ The system was evaluated using key RAG quality metrics:
 - **Groundedness** – Ensures answers are based on retrieved context <I>(reduces hallucination)</I>
 - **Context Utilization** – Evaluates how effectively retrieved data is used  
 
+### Quantitative Comparison: <I>RAG vs Hybrid System</I>
+
+| Metric              | Baseline RAG | Hybrid (RAG + Graph) | Improvement |
+|--------------------|-------------|---------------------|------------|
+| Context Relevance  | 0.553       | 0.553               | — (same retrieval base) |
+| Answer Relevance   | 0.455       | 0.680               | +49% |
+| Groundedness       | 0.613       | 0.646               | +5.4% |
+
 ### Evaluation Results
 
-- High answer relevance across financial queries  
-- Strong groundedness due to hybrid retrieval <I>(RAG + Graph)</I>
-- Improved context utilization via structured + unstructured fusion  
+- **Answer relevance improved significantly (+49%)**
+  - Hybrid system produces answers that better align with user intent
+
+- **Groundedness improved (+5.4%)**
+  - Knowledge Graph ensures stronger factual alignment with source data
+
+- **Context relevance remains constant**
+  - Since both systems use the same vector retrieval base
+
+### Structural Improvement <I>(Beyond Metrics)</I>
+
+While quantitative metrics show measurable gains, the **largest improvement is in answer structure and reasoning quality**, which is not fully captured by standard evaluation metrics.
+
+Hybrid system enables:
+
+- **Clear categorization of risks** <I>(e.g., Cybersecurity, Regulatory, Market)</I>
+- **Explicit linking of risks -> mitigations**
+- **More structured, readable outputs**
+- **Improved logical flow and explainability**
+
+In contrast, baseline RAG:
+
+- Produces **less structured responses**
+- Lacks **explicit relationships between entities**
+- Is more prone to **flat or generic answers**
 
 ### Evaluation Visualization
 
 ![Evaluation Metrics](./screenshots/evaluation.png)
+
+###  Key Improvements
+
+- High answer relevance across financial queries  
+- Strong groundedness due to hybrid retrieval <I>(RAG + Graph)</I>
+- Improved context utilization via structured + unstructured fusion  
 
 ### Key Insight
 
