@@ -1,4 +1,4 @@
-# AI Financial Risk Analyst
+# AI Financial Risk Analys
 ### Hybrid RAG + Knowledge Graph + Multi-Agent System
 
 An end-to-end AI system that analyzes **company risks and mitigation strategies** using a **Hybrid Retrieval Architecture** combining:
