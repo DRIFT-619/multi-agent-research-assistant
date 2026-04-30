@@ -1,7 +1,6 @@
 import os
 import re
 import requests
-from groq import Groq
 from pathlib import Path
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
@@ -28,21 +27,23 @@ driver = GraphDatabase.driver(
     )
 )
 
-# OLLAMA_URL = "http://localhost:11434/api/generate"
-# MODEL = "llama3"
-
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+OLLAMA_URL = "http://localhost:11434/api/generate"
+MODEL = "llama3"
 
 def call_llm(prompt):
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0
+    response = requests.post(
+        OLLAMA_URL,
+        json={
+            "model": MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "options": {
+                "temperature": 0   # deterministic output
+            }
+        }
     )
 
-    return response.choices[0].message.content
+    return response.json()["response"]
 
 def extract_company(query, context=None, llm=None):
     if llm:

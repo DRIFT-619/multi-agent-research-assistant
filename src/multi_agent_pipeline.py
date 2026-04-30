@@ -2,11 +2,12 @@ import os
 import re
 import json
 from typing import TypedDict
+from langsmith import traceable
 from langgraph.graph import StateGraph
 
 from src.rag_pipeline import llm, rag_query, db
 from src.hybrid_pipeline import extract_company, get_company_data, link_risks_to_mitigations
-from src.hybrid_pipeline import call_llm # , OLLAMA_URL, MODEL
+from src.hybrid_pipeline import call_llm, OLLAMA_URL, MODEL
 
 class GraphState(TypedDict):
     question: str
@@ -31,6 +32,7 @@ def safe_parse_json(text):
         pass
     return None
 
+@traceable(name="Planner Agent")
 def planner_agent(state):
     question = state["question"]
 
@@ -47,11 +49,14 @@ Options:
 Return ONLY valid JSON.
 DO NOT write anything else.
 
-Example:
+Format:
 {{
-  "decision": "hybrid",
-  "reason": "The question asks for both structured risks and explanation"
+  "decision": "Placeholder",
+  "reason": "Y"
 }}
+
+Replace "Placeholder" with any one of the options mentioned above you feel is the best.
+Replace "Y" by infering some reasons based on the decision field.
 
 Question:
 {question}
@@ -73,6 +78,7 @@ Question:
         "reasoning": reasoning
     }
 
+@traceable(name="RAG Agent")
 def rag_agent(state):
     if state["decision"] not in ["rag_only", "hybrid"]:
         return {"rag_context": ""}
@@ -94,6 +100,7 @@ def get_structured_graph_data(company):
 
     return risk_map
 
+@traceable(name="Graph Agent")
 def graph_agent(state):
     if state["decision"] not in ["graph_only", "hybrid"]:
         return {"graph_context": ""}
@@ -118,6 +125,7 @@ def graph_agent(state):
         "graph_context": f"Company: {company}\n{formatted}"
     }
 
+@traceable(name="Final Answer Generator")
 def final_agent(state):
     question = state["question"]
 
@@ -136,6 +144,8 @@ STRICT RULES:
     - infer a reasonable mitigation from available context
     - or say: "No explicit mitigation mentioned, but likely addressed through..."
     - NEVER say "No mitigation found"
+    - Never say generic mitigations like "Enhancing these efforts over time"
+
 3. Do NOT generalize or guess
 4. Keep answer structured and precise
 5. Use phrases directly grounded in context

@@ -2,11 +2,12 @@ import os
 import shutil
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from sentence_transformers import SentenceTransformer
-from langchain_community.embeddings import HuggingFaceEmbeddings
+
 from langchain_chroma import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from transformers import pipeline
 
-
+embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 def delete_chroma_db(project_root):
     db_path = os.path.join(project_root, "chroma_db")
@@ -52,6 +53,15 @@ def chunk_documents(documents):
 
     return chunks
 
+def create_db(chunks):
+    db = Chroma.from_documents(
+        documents=chunks,
+        embedding=embedding_function,
+        persist_directory="chroma_db"
+    )
+
+    return db
+
 def main():
     # Get project root dynamically
     current_dir = os.path.dirname(__file__)
@@ -68,6 +78,10 @@ def main():
     print("\nChunking documents...")
     chunks = chunk_documents(docs)
     print(f"Total chunks created: {len(chunks)}")
+
+    print("\nCreating DB...")
+    db = create_db(chunks)
+    print(f"Total Embeddings created: {db._collection.count()}")    
 
 if __name__ == "__main__":
     main()
