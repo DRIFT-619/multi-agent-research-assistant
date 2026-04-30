@@ -3,10 +3,10 @@
 
 An end-to-end AI system that analyzes **company risks and mitigation strategies** using a **Hybrid Retrieval Architecture** combining:
 
-- Retrieval-Augmented Generation (RAG)
-- Knowledge Graph (Neo4j AuraDB)
-- Multi-Agent Orchestration (LangGraph)
-- Observability (LangSmith)
+- Retrieval-Augmented Generation <I>(RAG)</I>
+- Knowledge Graph <I>(Neo4j AuraDB)</I>
+- Multi-Agent Orchestration <I>(LangGraph)</I>
+- Observability <I>(LangSmith)</I>
 - FastAPI + Streamlit UI
 
 ##  Problem Statement ->
@@ -17,8 +17,8 @@ Traditional LLMs:
 - Cannot connect risks -> mitigations properly
 
 This project solves that by combining:
-- **Unstructured context (RAG)**
-- **Structured relationships (Graph DB)**
+- **Unstructured context <I>(RAG)</I>**
+- **Structured relationships <I>(Graph DB)</I>**
 
 ## Key Features ->
 
@@ -50,13 +50,13 @@ This project solves that by combining:
 The system was evaluated using key RAG quality metrics:
 
 - **Answer Relevance** – Measures how well the answer matches the user query  
-- **Groundedness** – Ensures answers are based on retrieved context (reduces hallucination)  
+- **Groundedness** – Ensures answers are based on retrieved context <I>(reduces hallucination)</I>
 - **Context Utilization** – Evaluates how effectively retrieved data is used  
 
 ### Evaluation Results
 
 - High answer relevance across financial queries  
-- Strong groundedness due to hybrid retrieval (RAG + Graph)  
+- Strong groundedness due to hybrid retrieval <I>(RAG + Graph)</I>
 - Improved context utilization via structured + unstructured fusion  
 
 ### Evaluation Visualization
@@ -110,13 +110,13 @@ What risks does Alphabet face and how do they mitigate them?
 ```
 
 ### Output Highlights:
-Categorized risks (Cybersecurity, Regulatory, etc.)
+Categorized risks <I>(Cybersecurity, Regulatory, etc.)</I>
 Linked mitigations from structured graph
 Context-aware reasoning from RAG
 
 ## Tech Stack->
-- **LLM:** LLaMA 3 (Ollama) / OpenAI (optional)
-- **Embeddings:** Sentence Transformers (all-MiniLM-L6-v2)
+- **LLM:** LLaMA 3 <I>(Ollama)</I>
+- **Embeddings:** Sentence Transformers & Hugging Face Embeddings <I>(all-MiniLM-L6-v2)</I>
 - **Vector DB:** ChromaDB
 - **Graph DB:** Neo4j AuraDB
 - **Frameworks:**
@@ -156,15 +156,15 @@ pip install -r requirements.txt
     ```
 
 ## Deployment Notes ->
-Current version uses local LLaMA (Ollama) model which is not  directly deployable on Cloud.
+Current version uses local LLaMA <I>(Ollama)</I> model which is not  directly deployable on Cloud.
 
 For cloud deployment:
-- Replace LLaMA with OpenAI: (e.g. model="gpt-4o-mini")
+- Replace LLaMA with OpenAI: <I>(e.g. model="gpt-4o-mini")</I>
 
 Then deploy on:
 - Render
+- AWS
 - Railway
-- AWS / GCP
 
 ## Observability (LangSmith) ->
 Tracks full pipeline execution
@@ -180,9 +180,9 @@ Shows:
     - Risk impact scoring
     - Probability estimation
 - Add real-time financial data APIs
-- Improve graph relationships (multi-hop reasoning)
+- Improve graph relationships <I>(multi-hop reasoning)</I>
 - Add authentication + user history
-- Deploy full system (API + UI)
+- Deploy full system <I>(API + UI)</I>
 
 ## Key Learnings ->
 - Hybrid retrieval significantly improves factual accuracy
