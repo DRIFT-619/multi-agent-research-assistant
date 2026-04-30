@@ -33,8 +33,43 @@ This project solves that by combining:
 - **LangSmith Observability**
   - Full pipeline trace + latency breakdown
 - **Optimized Performance**
-  - Reduced latency from ~80s → ~30s
+  - Reduced latency by approximately 60%
 
+## Results & Evaluation ->
+
+### Performance Improvements
+
+- Reduced response time from **~80 seconds → ~30 seconds**
+- Achieved **~62.5% latency reduction** through:
+  - optimized model loading
+  - efficient pipeline orchestration
+  - reduced redundant LLM calls
+
+### Evaluation Metrics
+
+The system was evaluated using key RAG quality metrics:
+
+- **Answer Relevance** – Measures how well the answer matches the user query  
+- **Groundedness** – Ensures answers are based on retrieved context (reduces hallucination)  
+- **Context Utilization** – Evaluates how effectively retrieved data is used  
+
+### Evaluation Results
+
+- High answer relevance across financial queries  
+- Strong groundedness due to hybrid retrieval (RAG + Graph)  
+- Improved context utilization via structured + unstructured fusion  
+
+### Evaluation Visualization
+
+![Evaluation Metrics](./screenshots/evaluation.png)
+
+### Key Insight
+
+Hybrid architecture significantly improves:
+
+- Factual accuracy <I>(vs pure LLM)</I>
+- Reasoning depth <I>(vs pure RAG)</I>
+- Explainability <I>(via structured graph relationships)</I>
 
 ## Architecture ->
 
