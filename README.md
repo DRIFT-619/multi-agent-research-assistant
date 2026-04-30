@@ -165,7 +165,7 @@ Context-aware reasoning from RAG
 ## Local Setup ->
 - **Clone Repo**
 ```
-git clone https://github.com/your-username/ai-risk-analyst.git
+git clone https://github.com/your-username/ai-financial-risk-analyst.git
 cd ai-risk-analyst
 ```
 
