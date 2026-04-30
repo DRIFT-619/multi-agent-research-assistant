@@ -12,9 +12,9 @@ An end-to-end AI system that analyzes **company risks and mitigation strategies*
 ##  Problem Statement ->
 
 Traditional LLMs:
-- hallucinate financial insights
-- lack structured reasoning
-- cannot connect risks → mitigations properly
+- Hallucinate financial insights
+- Lack structured reasoning
+- Cannot connect risks → mitigations properly
 
 This project solves that by combining:
 - **Unstructured context (RAG)**
@@ -25,7 +25,7 @@ This project solves that by combining:
 - **Hybrid Retrieval Pipeline**
   - Combines vector search + graph traversal
 - **Multi-Agent System**
-  - Planner → RAG Agent → Graph Agent → Final Synthesizer
+  - Planner -> RAG Agent -> Graph Agent -> Final Synthesizer
 - **Structured Risk Categorization**
   - Cybersecurity, Regulatory, Market, etc.
 - **Explainable Outputs**
@@ -40,7 +40,7 @@ This project solves that by combining:
 
 ```mermaid
 flowchart TD
-    A["🔍 User Query"] --> B["Planner Agent\n(Decision: RAG / Graph / Hybrid)"]
+    A["User Query"] --> B["Planner Agent\n(Decision: RAG / Graph / Hybrid)"]
     B --> C["RAG Agent\n(Vector DB - ChromaDB)"]
     B --> D["Graph Agent\n(Neo4j AuraDB)"]
     B --> E["Hybrid (Both)"]
@@ -72,6 +72,7 @@ flowchart TD
 
 ```Question:
 What risks does Alphabet face and how do they mitigate them?
+```
 
 #### Output Highlights:
 Categorized risks (Cybersecurity, Regulatory, etc.)
