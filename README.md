@@ -1,4 +1,4 @@
-# AI Financial Risk Analyst  
+# AI Financial Risk Analyst
 ### Hybrid RAG + Knowledge Graph + Multi-Agent System
 
 An end-to-end AI system that analyzes **company risks and mitigation strategies** using a **Hybrid Retrieval Architecture** combining:
@@ -14,7 +14,7 @@ An end-to-end AI system that analyzes **company risks and mitigation strategies*
 Traditional LLMs:
 - Hallucinate financial insights
 - Lack structured reasoning
-- Cannot connect risks → mitigations properly
+- Cannot connect risks -> mitigations properly
 
 This project solves that by combining:
 - **Unstructured context (RAG)**
@@ -74,38 +74,51 @@ flowchart TD
 What risks does Alphabet face and how do they mitigate them?
 ```
 
-#### Output Highlights:
+### Output Highlights:
 Categorized risks (Cybersecurity, Regulatory, etc.)
 Linked mitigations from structured graph
 Context-aware reasoning from RAG
 
 ## Tech Stack->
-- LLM: LLaMA 3 (Ollama) / OpenAI (optional)
-- Embeddings: Sentence Transformers (all-MiniLM-L6-v2)
-- Vector DB: ChromaDB
-- Graph DB: Neo4j AuraDB
-- Frameworks:
-    -- LangChain
-    -- LangGraph
-- Backend: FastAPI
-- Frontend: Streamlit
-- Observability: LangSmith
+- **LLM:** LLaMA 3 (Ollama) / OpenAI (optional)
+- **Embeddings:** Sentence Transformers (all-MiniLM-L6-v2)
+- **Vector DB:** ChromaDB
+- **Graph DB:** Neo4j AuraDB
+- **Frameworks:**
+    - LangChain
+    - LangGraph
+- **Backend:** FastAPI
+- **Frontend:** Streamlit
+- **Observability:** LangSmith
 
 ## Local Setup ->
 - **Clone Repo**
+```
 git clone https://github.com/your-username/ai-risk-analyst.git
 cd ai-risk-analyst
+```
 
 - **Create Environment**
+```
 conda create -n ai-risk python=3.10
 conda activate ai-risk
+```
 
 - **Install Dependencies**
+```
 pip install -r requirements.txt
+```
 
 - **Run Services**
-    -- Start FastAPI: (uvicorn app:app --reload)
-    -- Start Streamlit UI: (streamlit run ui.py)
+    - Start FastAPI:
+    ```
+    uvicorn app:app --reload)
+    ```
+
+    - Start Streamlit UI: 
+    ```
+    streamlit run ui.py
+    ```
 
 ## Deployment Notes ->
 Current version uses local LLaMA (Ollama) → not deployable directly
