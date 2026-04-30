@@ -55,7 +55,7 @@ The system was evaluated using key RAG quality metrics:
 
 ### Quantitative Comparison: <I>RAG vs Hybrid System</I>
 
-| Metric              | Baseline RAG | Hybrid (RAG + Graph) | Improvement |
+| Metric              | Baseline RAG | Hybrid <I>(RAG + Graph)</I> | Improvement |
 |--------------------|-------------|---------------------|------------|
 | Context Relevance  | 0.553       | 0.553               | (same retrieval base) |
 | Answer Relevance   | 0.455       | 0.680               | +49% |
