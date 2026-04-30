@@ -112,7 +112,7 @@ pip install -r requirements.txt
 - **Run Services**
     - Start FastAPI:
     ```
-    uvicorn app:app --reload)
+    uvicorn app:app --reload
     ```
 
     - Start Streamlit UI: 
@@ -121,7 +121,7 @@ pip install -r requirements.txt
     ```
 
 ## Deployment Notes ->
-Current version uses local LLaMA (Ollama) → not deployable directly
+Current version uses local LLaMA (Ollama) model which is not  directly deployable on Cloud.
 
 For cloud deployment:
 - Replace LLaMA with OpenAI: (e.g. model="gpt-4o-mini")
@@ -141,9 +141,9 @@ Shows:
 
 ## Future Improvements ->
 - Extract more structured insights:
-    -- Financial outcomes
-    -- Risk impact scoring
-    -- Probability estimation
+    - Financial outcomes
+    - Risk impact scoring
+    - Probability estimation
 - Add real-time financial data APIs
 - Improve graph relationships (multi-hop reasoning)
 - Add authentication + user history
@@ -156,5 +156,5 @@ Shows:
 - Observability is critical for debugging LLM pipelines
 
 # Author ->
-Ayush Saxena
+Ayush Saxena <br>
 MSc Data Science | AI/ML Engineer
