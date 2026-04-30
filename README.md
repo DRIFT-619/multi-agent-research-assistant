@@ -112,7 +112,7 @@ pip install -r requirements.txt
 - **Run Services**
     - Start FastAPI:
     ```
-    uvicorn app:app --reload
+    python -m uvicorn app:app --reload
     ```
 
     - Start Streamlit UI: 
