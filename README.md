@@ -33,7 +33,7 @@ This project solves that by combining:
 - **LangSmith Observability**
   - Full pipeline trace + latency breakdown
 - **Optimized Performance**
-  - Reduced latency by approximately 60%
+  - Reduced latency
 
 ## Results & Evaluation ->
 
